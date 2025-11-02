@@ -7,7 +7,7 @@ echo ""
 # Informações do banco
 DB_HOST="oracle.fiap.com.br"
 DB_PORT="1521"
-DB_USER="***REMOVED***"
+DB_USER="RM559684"
 DB_SID="ORCL"
 
 echo "📊 Configuração:"
@@ -77,8 +77,8 @@ if [ -f "src/main/resources/application.yml" ]; then
         echo "   ⚠️  Não configurado para Oracle FIAP"
     fi
     
-    if grep -q "***REMOVED***" src/main/resources/application.yml; then
-        echo "   ✅ Usuário ***REMOVED*** configurado"
+    if grep -q "RM559684" src/main/resources/application.yml; then
+        echo "   ✅ Usuário RM559684 configurado"
     else
         echo "   ⚠️  Usuário não configurado corretamente"
     fi

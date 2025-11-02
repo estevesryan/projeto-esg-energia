@@ -41,3 +41,8 @@ logs/
 ### Database ###
 *.db
 *.sqlite
+
+### Environment Variables ###
+.env
+.env.local
+.env.*.local

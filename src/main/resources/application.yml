@@ -3,9 +3,9 @@ spring:
     name: projeto-esg-energia
   
   datasource:
-    url: jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
-    username: ***REMOVED***
-    password: "***REMOVED***"
+    url: ${SPRING_DATASOURCE_URL:jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       maximum-pool-size: 10
@@ -27,7 +27,7 @@ spring:
     baseline-on-migrate: false
     clean-disabled: false
     locations: classpath:db/migration
-    schemas: ***REMOVED***
+    schemas: ${SPRING_DATASOURCE_USERNAME}
 
 server:
   port: 8080

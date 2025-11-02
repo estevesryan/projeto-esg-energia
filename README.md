@@ -6,9 +6,31 @@ Sistema de monitoramento de eficiência energética - Spring Boot + Oracle FIAP
 
 ## 🚀 Início Rápido
 
+### Configuração de Variáveis de Ambiente
+
+1. Copie o arquivo `.env.example` para `.env`:
+```bash
+cp .env.example .env
+```
+
+2. Edite o arquivo `.env` com suas credenciais:
+```bash
+SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+SPRING_DATASOURCE_USERNAME=seu_usuario
+SPRING_DATASOURCE_PASSWORD=sua_senha
+JWT_SECRET=sua_chave_jwt_em_base64
+```
+
+3. Execute a aplicação:
 ```bash
 mvn clean install
 mvn spring-boot:run
+```
+
+### Usando Docker
+
+```bash
+docker compose up --build -d
 ```
 
 Acesse: **http://localhost:8080/swagger-ui.html**
@@ -23,9 +45,7 @@ Acesse: **http://localhost:8080/swagger-ui.html**
 
 ## 🗄️ Banco Oracle FIAP
 
-- Host: `oracle.fiap.com.br:1521`
-- User: `***REMOVED***`
-- SID: `ORCL`
+Configure suas credenciais no arquivo `.env` (veja seção "Início Rápido").
 
 Flyway cria 5 tabelas automaticamente.
 
@@ -86,4 +106,4 @@ java -version
 
 ---
 
-*****REMOVED***** | FIAP 2025
+**RM559684** | FIAP 2025
