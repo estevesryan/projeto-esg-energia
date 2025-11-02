@@ -1,0 +1,77 @@
+# Collection de exemplos para teste da API ESG
+
+### 1. Login como Admin
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### 2. Listar todas as unidades
+GET http://localhost:8080/api/unidades
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 3. Criar nova unidade (Admin apenas)
+POST http://localhost:8080/api/unidades
+Authorization: Bearer SEU_TOKEN_AQUI
+Content-Type: application/json
+
+{
+  "nome": "Unidade Teste",
+  "localizacao": "Rua Exemplo, 123 - São Paulo/SP",
+  "limiteConsumoDiarioKwh": 600.00
+}
+
+### 4. Registrar leitura (público - para sensores IoT)
+POST http://localhost:8080/api/leituras
+Content-Type: application/json
+
+{
+  "unidadeId": 1,
+  "timestamp": "2025-11-02T15:30:00",
+  "consumoKwh": 550.5,
+  "sensorId": "SENSOR-001"
+}
+
+### 5. Listar leituras de uma unidade
+GET http://localhost:8080/api/leituras?unidadeId=1
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 6. Ver indicadores de uma unidade
+GET http://localhost:8080/api/indicadores?unidadeId=1
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 7. Listar alertas não lidos
+GET http://localhost:8080/api/alertas/nao-lidos
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 8. Marcar alerta como lido
+PATCH http://localhost:8080/api/alertas/1/marcar-lido
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 9. Criar agendamento (Admin apenas)
+POST http://localhost:8080/api/agendamentos
+Authorization: Bearer SEU_TOKEN_AQUI
+Content-Type: application/json
+
+{
+  "unidadeId": 1,
+  "descricao": "Manutenção do sistema de ar-condicionado",
+  "tipoAcao": "MANUTENCAO",
+  "dataHoraAgendada": "2025-11-20T14:00:00",
+  "observacao": "Verificar todos os filtros e compressores"
+}
+
+### 10. Listar agendamentos pendentes
+GET http://localhost:8080/api/agendamentos/status/PENDENTE
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 11. Atualizar status de agendamento
+PATCH http://localhost:8080/api/agendamentos/1/status?status=EXECUTADO
+Authorization: Bearer SEU_TOKEN_AQUI
+
+### 12. Buscar unidade específica
+GET http://localhost:8080/api/unidades/1
+Authorization: Bearer SEU_TOKEN_AQUI

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: esg-energia-app
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+      - SPRING_DATASOURCE_USERNAME=***REMOVED***
+      - SPRING_DATASOURCE_PASSWORD=***REMOVED***
+      - JWT_SECRET=c3VhLWNoYXZlLXNlY3JldGEtbXVpdG8tc2VndXJhLWNvbS1uby1taW5pbW8tMjU2LWJpdHMtcGFyYS1oczI1Ng==
+    ports:
+      - "8080:8080"
+    networks:
+      - esg-network
+    restart: on-failure
+
+networks:
+  esg-network:
+    driver: bridge
